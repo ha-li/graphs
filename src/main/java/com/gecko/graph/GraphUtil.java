@@ -7,6 +7,20 @@ import com.gecko.graph.exception.VertexNotFoundException;
  */
 public class GraphUtil {
 
+    public static Edge[] edges (Graph g) {
+        int E = 0;
+        Edge[] edges = new Edge[g.E()];
+        for (int v = 0; v < g.V(); v++) {
+            AdjacencyList a = g.getAdjList (v);
+            for (int w = a.beg(); !a.end(); w = a.next() ) {
+                if( v < w ) {
+                    edges[E++] = new Edge (v, w);
+                }
+            }
+        }
+        return edges;
+    }
+
     // returns the transpose of a graph
     public static int[][] transpose(int[][] g) {
 

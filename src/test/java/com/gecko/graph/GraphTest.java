@@ -2,8 +2,6 @@ package com.gecko.graph;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by hlieu on 11/5/16.
  */
@@ -11,7 +9,7 @@ public class GraphTest {
 
     //@Test
     public void test_graph() {
-        Graph g = new Graph(4);
+        GraphImpl g = new GraphImpl (4);
         //g.addEdge(0, 1);
         //g.addEdge(0, 2);
         //g.addEdge(0, 3);
@@ -19,7 +17,7 @@ public class GraphTest {
 
     @Test
     public void test_graph_bfs() {
-        Graph g = new Graph(4);
+        GraphImpl g = new GraphImpl (4);
         //g.addEdge(0, 1);
         //g.addEdge(0, 2);
         //g.addEdge(0, 3);
