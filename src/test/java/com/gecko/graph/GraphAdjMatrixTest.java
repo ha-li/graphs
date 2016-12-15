@@ -2,6 +2,7 @@ package com.gecko.graph;
 
 import com.gecko.graph.algorithms.GraphDegree;
 import com.gecko.graph.algorithms.GraphPath;
+import com.gecko.graph.algorithms.GraphPathDFS;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -71,7 +72,8 @@ public class GraphAdjMatrixTest {
       Assert.assertTrue(g.isEdge(0,3) == true);
       Assert.assertTrue(g.isEdge(0,4) == true);
 
-      GraphPath path = new GraphPath (g, 2, 3);
+      GraphPath path = new GraphPathDFS (g);
+      Assert.assertTrue ( path.search(2, 3) );
       Assert.assertTrue ( path.exists() );
    }
 
