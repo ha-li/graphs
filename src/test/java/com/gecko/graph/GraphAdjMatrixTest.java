@@ -1,8 +1,6 @@
 package com.gecko.graph;
 
-import com.gecko.graph.algorithms.GraphDegree;
-import com.gecko.graph.algorithms.GraphPath;
-import com.gecko.graph.algorithms.GraphPathDFS;
+import com.gecko.graph.algorithms.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -36,7 +34,7 @@ public class GraphAdjMatrixTest {
    }
 
 
-   @Test
+   //@Test
    public void testGraph () {
       Graph g = createConnectedGraph ();
       Assert.assertTrue(g.isEdge(2,3) == true);
@@ -46,7 +44,7 @@ public class GraphAdjMatrixTest {
       Assert.assertTrue(g.isEdge(0,4) == true);
    }
 
-   @Test
+   //@Test
    public void testDegree () {
       Graph g = createConnectedGraph ();
       Assert.assertTrue(g.isEdge(2,3) == true);
@@ -59,7 +57,7 @@ public class GraphAdjMatrixTest {
       Assert.assertTrue(degree.degree(2) == 2);
    }
 
-   @Test
+   //@Test
    public void testDegree2 () {
       Graph g = createConnectedGraph ();
       Assert.assertTrue(g.isEdge(2,3) == true);
@@ -78,7 +76,7 @@ public class GraphAdjMatrixTest {
    }
 
 
-   @Test
+   //@Test
    public void testGraphPath () {
       Graph g = createConnectedGraph ();
       Assert.assertTrue(g.isEdge(2,3) == true);
@@ -100,7 +98,7 @@ public class GraphAdjMatrixTest {
    }
 
 
-   @Test
+   //@Test
    public void testGraphPathDisconnected () {
       Graph g = createDisconnectedGraph ();
       Assert.assertTrue(g.isEdge(2,3) == true);
@@ -111,11 +109,44 @@ public class GraphAdjMatrixTest {
       Assert.assertTrue(g.isEdge(5,6) == true);
       Assert.assertTrue(g.isEdge(5,4) == false);
 
-      GraphPath path = new GraphPathDFS (g);
-      Assert.assertTrue ( !path.search(1, 6) );
-      Assert.assertTrue ( !path.exists() );
+      GraphPath gPath = new GraphPathDFS (g);
+      Assert.assertTrue ( !gPath.search(1, 6) );
+      Assert.assertTrue ( !gPath.exists() );
 
-      Assert.assertTrue ( path.search(1, 3) );
-      Assert.assertTrue ( path.exists() );
+      Assert.assertTrue ( gPath.search(3, 4) );
+      Assert.assertTrue ( gPath.exists() );
+      Path path = gPath.path();
+      System.out.println ("path from 3 .. 4");
+      int i = 0;
+      for( i = path.start (); !path.isEnd(); i = path.next() ) {
+         System.out.print (i + ",");
+      }
+      System.out.println ( path.end() );
+      System.out.println ("end");
+   }
+
+   @Test
+   public void testBFSGraphPath () {
+      Graph g = createConnectedGraph();
+      Assert.assertTrue(g.isEdge(2,3) == true);
+      Assert.assertTrue(g.isEdge(0,1) == true);
+      Assert.assertTrue(g.isEdge(0,2) == true);
+      Assert.assertTrue(g.isEdge(0,3) == true);
+      Assert.assertTrue(g.isEdge(0,4) == true);
+
+      GraphPath gPath = new GraphBFS (g);
+      gPath.search (1, 0);
+
+      Path ordinance = gPath.path();
+      System.out.println ("bfs ordinance");
+      for( int t = ordinance.start (); ! ordinance.isEnd(); t = ordinance.next()) {
+         System.out.print (t + ",");
+      }
+      System.out.println (ordinance.end());
+      System.out.println ("end");
+
+      OrdinanceSearch searchPath = (OrdinanceSearch) ordinance;
+      int i = 3;
+      System.out.println ("vertex " + i + " was searched " + searchPath.order(i) );
    }
 }
