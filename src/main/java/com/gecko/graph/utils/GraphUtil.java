@@ -1,5 +1,8 @@
-package com.gecko.graph;
+package com.gecko.graph.utils;
 
+import com.gecko.graph.AdjacencyList;
+import com.gecko.graph.Edge;
+import com.gecko.graph.Graph;
 import com.gecko.graph.exception.VertexNotFoundException;
 
 /**

@@ -1,8 +1,7 @@
 package com.gecko.graph;
 
+import com.gecko.graph.utils.GraphUtils;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by hlieu on 11/10/16.

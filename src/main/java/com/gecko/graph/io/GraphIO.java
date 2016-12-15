@@ -1,4 +1,7 @@
-package com.gecko.graph;
+package com.gecko.graph.io;
+
+import com.gecko.graph.AdjacencyList;
+import com.gecko.graph.Graph;
 
 /**
  * Created by hlieu on 12/13/16.

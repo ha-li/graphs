@@ -1,6 +1,7 @@
 package com.gecko.graph;
 
 import com.gecko.graph.exception.VertexNotFoundException;
+import com.gecko.graph.utils.GraphUtil;
 import org.junit.Assert;
 import org.junit.Test;
 

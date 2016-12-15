@@ -1,4 +1,6 @@
-package com.gecko.graph;
+package com.gecko.graph.algorithms;
+
+import com.gecko.graph.Point;
 
 import java.util.ArrayList;
 import java.util.List;

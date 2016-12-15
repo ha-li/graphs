@@ -12,4 +12,5 @@ public interface Graph {
    void remove (Edge edge);
    boolean isEdge (int v1, int v2);
    AdjacencyList getAdjList(int v);
+   int degree (int v);
 }

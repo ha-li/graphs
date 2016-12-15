@@ -53,6 +53,10 @@ public class GraphAdjList implements Graph {
       throw new RuntimeException ("not implemented yet");
    }
 
+   public int degree (int v) {
+      throw new RuntimeException ("not implemented yet");
+   }
+
    public AdjacencyList getAdjList (int v) {
       return new AdjLinkedList(v);
    }

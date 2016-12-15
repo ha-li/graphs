@@ -1,4 +1,6 @@
-package com.gecko.graph;
+package com.gecko.graph.utils;
+
+import com.gecko.graph.Point;
 
 /**
  * Created by hlieu on 11/10/16.
