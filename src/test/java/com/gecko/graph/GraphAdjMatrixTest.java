@@ -116,8 +116,5 @@ public class GraphAdjMatrixTest {
 
       Assert.assertTrue ( path.search(1, 3) );
       Assert.assertTrue ( path.exists() );
-
-      Assert.assertTrue ( path.search(1, 3) );
-      Assert.assertTrue ( path.exists() );
    }
 }
