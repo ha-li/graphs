@@ -108,7 +108,8 @@ public class GraphAdjMatrixTest {
       Assert.assertTrue(g.isEdge(0,2) == true);
       Assert.assertTrue(g.isEdge(0,3) == true);
       Assert.assertTrue(g.isEdge(0,4) == true);
-
+      Assert.assertTrue(g.isEdge(5,6) == true);
+      Assert.assertTrue(g.isEdge(5,4) == false);
 
       GraphPath path = new GraphPathDFS (g);
       Assert.assertTrue ( !path.search(1, 6) );
