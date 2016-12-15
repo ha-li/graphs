@@ -11,19 +11,34 @@ import org.junit.Test;
  */
 public class GraphAdjMatrixTest {
 
-   private Graph createGraph () {
+   private Graph createConnectedGraph () {
       Graph g = new GraphAdjMatrix (5);
       g.insert(new Edge(0,1));
       g.insert(new Edge(0,2));
       g.insert(new Edge(0,3));
       g.insert(new Edge(0,4));
       g.insert(new Edge(2,3));
+
       return g;
    }
 
+   private Graph createDisconnectedGraph () {
+      Graph g = new GraphAdjMatrix (7);
+      g.insert(new Edge(0,1));
+      g.insert(new Edge(0,2));
+      g.insert(new Edge(0,3));
+      g.insert(new Edge(0,4));
+      g.insert(new Edge(2,3));
+
+      g.insert(new Edge(5, 6));
+
+      return g;
+   }
+
+
    @Test
    public void testGraph () {
-      Graph g = createGraph();
+      Graph g = createConnectedGraph ();
       Assert.assertTrue(g.isEdge(2,3) == true);
       Assert.assertTrue(g.isEdge(0,1) == true);
       Assert.assertTrue(g.isEdge(0,2) == true);
@@ -33,7 +48,7 @@ public class GraphAdjMatrixTest {
 
    @Test
    public void testDegree () {
-      Graph g = createGraph();
+      Graph g = createConnectedGraph ();
       Assert.assertTrue(g.isEdge(2,3) == true);
       Assert.assertTrue(g.isEdge(0,1) == true);
       Assert.assertTrue(g.isEdge(0,2) == true);
@@ -46,7 +61,7 @@ public class GraphAdjMatrixTest {
 
    @Test
    public void testDegree2 () {
-      Graph g = createGraph();
+      Graph g = createConnectedGraph ();
       Assert.assertTrue(g.isEdge(2,3) == true);
       Assert.assertTrue(g.isEdge(0,1) == true);
       Assert.assertTrue(g.isEdge(0,2) == true);
@@ -65,16 +80,44 @@ public class GraphAdjMatrixTest {
 
    @Test
    public void testGraphPath () {
-      Graph g = createGraph();
+      Graph g = createConnectedGraph ();
       Assert.assertTrue(g.isEdge(2,3) == true);
       Assert.assertTrue(g.isEdge(0,1) == true);
       Assert.assertTrue(g.isEdge(0,2) == true);
       Assert.assertTrue(g.isEdge(0,3) == true);
       Assert.assertTrue(g.isEdge(0,4) == true);
 
+
       GraphPath path = new GraphPathDFS (g);
       Assert.assertTrue ( path.search(2, 3) );
       Assert.assertTrue ( path.exists() );
+
+      Assert.assertTrue ( path.search(1, 3) );
+      Assert.assertTrue ( path.exists() );
+
+      Assert.assertTrue ( path.search(1, 3) );
+      Assert.assertTrue ( path.exists() );
    }
 
+
+   @Test
+   public void testGraphPathDisconnected () {
+      Graph g = createDisconnectedGraph ();
+      Assert.assertTrue(g.isEdge(2,3) == true);
+      Assert.assertTrue(g.isEdge(0,1) == true);
+      Assert.assertTrue(g.isEdge(0,2) == true);
+      Assert.assertTrue(g.isEdge(0,3) == true);
+      Assert.assertTrue(g.isEdge(0,4) == true);
+
+
+      GraphPath path = new GraphPathDFS (g);
+      Assert.assertTrue ( !path.search(1, 6) );
+      Assert.assertTrue ( !path.exists() );
+
+      Assert.assertTrue ( path.search(1, 3) );
+      Assert.assertTrue ( path.exists() );
+
+      Assert.assertTrue ( path.search(1, 3) );
+      Assert.assertTrue ( path.exists() );
+   }
 }

@@ -13,12 +13,14 @@ public class GraphPathDFS implements GraphPath {
 
    public GraphPathDFS (Graph g) {
       this.g = g;
-      found = false;
-      visited = new boolean[g.V()];
+      //found = false;
+      //visited = new boolean[g.V()];
       // found = search (v, w);
    }
 
    public boolean search (int v, int w) {
+      found = false;
+      visited = new boolean[g.V()];
       return dfs (v, w);
    }
 
