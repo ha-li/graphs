@@ -28,6 +28,7 @@ public class GraphBFS implements GraphPath {
    public boolean search (int v, int w) {
       found = false;
       visited = new boolean[g.V()];
+      reset ();
       return bfs(v, w);
    }
 

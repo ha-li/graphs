@@ -34,7 +34,7 @@ public class GraphAdjMatrixTest {
    }
 
 
-   //@Test
+   @Test
    public void testGraph () {
       Graph g = createConnectedGraph ();
       Assert.assertTrue(g.isEdge(2,3) == true);
@@ -44,7 +44,7 @@ public class GraphAdjMatrixTest {
       Assert.assertTrue(g.isEdge(0,4) == true);
    }
 
-   //@Test
+   @Test
    public void testDegree () {
       Graph g = createConnectedGraph ();
       Assert.assertTrue(g.isEdge(2,3) == true);
@@ -57,7 +57,7 @@ public class GraphAdjMatrixTest {
       Assert.assertTrue(degree.degree(2) == 2);
    }
 
-   //@Test
+   @Test
    public void testDegree2 () {
       Graph g = createConnectedGraph ();
       Assert.assertTrue(g.isEdge(2,3) == true);
@@ -76,7 +76,7 @@ public class GraphAdjMatrixTest {
    }
 
 
-   //@Test
+   @Test
    public void testGraphPath () {
       Graph g = createConnectedGraph ();
       Assert.assertTrue(g.isEdge(2,3) == true);
@@ -98,7 +98,7 @@ public class GraphAdjMatrixTest {
    }
 
 
-   //@Test
+   @Test
    public void testGraphPathDisconnected () {
       Graph g = createDisconnectedGraph ();
       Assert.assertTrue(g.isEdge(2,3) == true);
@@ -148,5 +148,26 @@ public class GraphAdjMatrixTest {
       OrdinanceSearch searchPath = (OrdinanceSearch) ordinance;
       int i = 3;
       System.out.println ("vertex " + i + " was searched " + searchPath.order(i) );
+   }
+
+   @Test
+   public void testShortestGraphPath () {
+      Graph g = createConnectedGraph();
+      Assert.assertTrue(g.isEdge(2,3) == true);
+      Assert.assertTrue(g.isEdge(0,1) == true);
+      Assert.assertTrue(g.isEdge(0,2) == true);
+      Assert.assertTrue(g.isEdge(0,3) == true);
+      Assert.assertTrue(g.isEdge(0,4) == true);
+
+      GraphPath gPath = new GraphShortestPath (g);
+      gPath.search (1, 3);
+
+      Path shortest = gPath.path();
+      System.out.println ("shortest path backwards");
+      for( int t = shortest.start (); ! shortest.isEnd(); t = shortest.next()) {
+         System.out.print (t + ",");
+      }
+      System.out.println (shortest.end());
+      System.out.println ("end");
    }
 }
